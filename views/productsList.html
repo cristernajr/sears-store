@@ -1,0 +1,88 @@
+<!-- header -->
+
+<div class="row">
+    <div class="col-md-7">
+        <p><a href="#/">
+            <img src="views/img/logo-sears.png" width="100" alt="sears">
+        </a></p>
+    </div><!-- /.col -->
+    <div class="col-md-3">
+        <input type="text" class="form-control text-capitalize" placeholder="ej. camisa" ng-model="products.searchInput" ng-change="products.search()">
+    </div><!-- /.col -->
+    <div class="col-md-2">
+        <select class="form-control text-capitalize" ng-model="products.genderSelected" ng-change="products.changeProductList()">
+            <option value="Todo">Todo</option>
+            <option value="Damas">Damas</option>
+            <option value="Caballeros">Caballeros</option>
+        </select>
+    </div><!-- /.col -->
+</div><!-- /.row -->
+
+<!-- products list -->
+
+<div class="row">
+    <div ng-repeat="product in products.list | filter: products.searchMaster">
+        <div class="col-md-4 text-center text-capitalize product" data-toggle="modal" data-target="#myModal" ng-click="products.details(product.id)">
+            <p><a href="#/"><img ng-src="{{product.image}}" width="100%" alt="{{product.name}}"></a></p>
+            <h3>{{product.name}}</h3>
+            <p>{{product.description}}.</p>
+            <p><button class="btn btn-primary">
+                <strong>{{product.price|currency}}</strong> pesos.
+                <span class="glyphicon glyphicon-tag"></span>
+            </button></p>
+        </div><!-- /.row -->
+    </div><!-- /.div -->
+    <div class="col-md-12 text-center">
+        <ul class="pager">
+          <li class="previous disabled"><a href="#/">&larr; Atras</a></li>
+          <li class="next"><a href="#/">Delante &rarr;</a></li>
+        </ul>
+    </div><!-- /.div -->
+</div><!-- /.row -->
+
+<!-- modal -->
+
+<div class="modal fade" id="myModal">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h6><img src="views/img/logo-sears.png" width="100" alt="sears"></h6>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <p><img ng-src="{{products.master.image}}" width="100%" alt="{{products.master.name}}"></p>
+                    </div>
+                    <div class="col-sm-6 text-capitalize">
+                        <h3>{{products.master.name}}</h3>
+                        <h4>{{products.master.brand}}</h4>
+                        <p>{{products.master.description}}.</p>
+                        <p class="text-primary">
+                            <strong>{{(products.master.price*products.quantity)|currency}}</strong> pesos. 
+                            <span class="glyphicon glyphicon-tag"></span>
+                        </p>
+                        <form class="navbar-form navbar-left" role="search">
+                          <div class="form-group">
+                            <input type="number" class="form-control" min="1" max="100" step="1" value="1" ng-model="products.quantity">
+                          </div>
+                          <select class="form-control" ng-model="products.size">
+                              <option>CH</option>
+                              <option>M</option>
+                              <option>G</option>
+                              <option>XG</option>
+                              <option>XXG</option>
+                          </select>
+                        </form>
+                    </div><!-- .col -->
+                </div><!-- .row -->
+            </div><!-- .modal-body -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cerrar
+                </button>
+                <button type="button" class="btn btn-primary">Agregar al carrito <span class="glyphicon glyphicon-shopping-cart"></span>
+                </button>
+            </div><!-- .modal-footer -->
+        </div><!-- .modal-content -->
+    </div><!-- .modal-dialog -->
+</div><!-- .modal -->
