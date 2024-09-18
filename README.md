@@ -4,7 +4,7 @@
 
 ## Description
 
-Sears online store using AngularJS and Bootswatch.
+Sears online store using AngularJS and Bootswatch, developed in 2019.
 
 ## Index
 
