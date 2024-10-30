@@ -9,7 +9,6 @@ Sears online store using AngularJS and Bootswatch, developed in 2019.
 ## Index
 
 - [Instalation](#instalation)
-- [Usage](#usage)
 - [Live Preview](#live-preview)
 - [License](#license)
 
@@ -17,11 +16,6 @@ Sears online store using AngularJS and Bootswatch, developed in 2019.
 
 ```
 git clone https://github.com/olivierpaulcris/sears-store.git
-```
-
-## Usage
-
-```
 git checkout master
 ```
 
